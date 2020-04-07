@@ -40,7 +40,7 @@ public class MusicPlayer implements MediaPlayer.OnCompletionListener {
 
         if (player == null) {
             player = new MediaPlayer();
-            player.setOnCompletionListener(this);
+         //   player.setOnCompletionListener(this);
         }else {
             player.reset();
         }
@@ -78,10 +78,6 @@ public class MusicPlayer implements MediaPlayer.OnCompletionListener {
         Log.d(TAG, "Music Stopped");
     }
 
-
-    /**
-     * Register a callback to be invoked when the end of a song has been reached during playback
-     */
     public void setOnCompletionListener(MusicPlayerCompletionListener listener){
         onMusicCompletionListener = listener;
     }
@@ -96,4 +92,5 @@ public class MusicPlayer implements MediaPlayer.OnCompletionListener {
             e.printStackTrace();
         }
     }
+
 }

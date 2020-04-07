@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialKeyguardLayout="@layout/activity_main"
     android:initialLayout="@layout/activity_main"
-    android:minHeight="110dp"
+    android:minHeight="200dp"
     android:minWidth="250dp"
-    android:previewImage="@drawable/widget_preview"
+    android:previewImage="@drawable/ic_launcher"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen">
