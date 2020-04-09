@@ -135,24 +135,17 @@ public class MusicService extends Service implements MusicPlayerCompletionListen
             updateUI(song.getTitle(), song.getArtist(), song.getDurationStr(), false);
 
             player.pause();
-            Log.d(TAG, "Music paused");
         }
     }
 
 
     private void stopMusic() {
-        Log.d(TAG, "STOP MUSIC");
-
         player.stop();
         updateUI(null, null, null, false);
         MusicLoader.getInstance(this).close();
-
-        //  stopSelf();
     }
 
     private void nextSong() throws IOException {
-        Log.d(TAG, "NEXT SONG");
-
         if (player != null) {
             Song nextSong = MusicLoader.getInstance(this).getNext();
             player.setSong(nextSong);
