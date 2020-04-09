@@ -47,8 +47,6 @@ public class SongListLoader {
 		        null,
 				SORT_BY);
 
-        Log.d(TAG, "Query finished. " + (cur == null ? "Returned NULL." : "Returned a cursor."));
-
         if (cur == null) {
             // Query failed...
             Log.e(TAG, "Failed to retrieve music: cursor is null");
@@ -82,15 +80,11 @@ public class SongListLoader {
 				new String[] { "%"+constraint+"%", "%"+constraint+"%" },
 				SORT_BY);
 
-		Log.d(TAG, "Query for filter finished. " + (cur == null ? "Returned NULL." : "Returned a cursor."));
-
 		if (cur == null) {
 			// Query failed...
 			Log.e(TAG, "Failed to retrieve music: cursor is null");
 			return null;
 		}
-
-		Log.d(TAG, "Done querying media. SongListLoader is ready.");
 		return cur;
 	}
 }

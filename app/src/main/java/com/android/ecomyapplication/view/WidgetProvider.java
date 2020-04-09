@@ -22,7 +22,6 @@ public class WidgetProvider extends AppWidgetProvider {
     public static final String ACTION_STOP = "com.smartpocket.musicwidget.stop";
     public static final String ACTION_NEXT = "com.smartpocket.musicwidget.next";
     public static final String ACTION_PREVIOUS = "com.smartpocket.musicwidget.previous";
-    public static final String ACTION_SHUFFLE = "com.smartpocket.musicwidget.shuffle";
     public static final String ACTION_JUMP_TO = "com.smartpocket.musicwidget.jump_to";
 
 
@@ -97,7 +96,7 @@ public class WidgetProvider extends AppWidgetProvider {
                 || action.equals(ACTION_NEXT)
                 || action.equals(ACTION_STOP)
                 || action.equals(ACTION_PREVIOUS)
-                || action.equals(ACTION_SHUFFLE))) {
+              )) {
             Intent serviceIntent = new Intent(context, MusicService.class);
             serviceIntent.setAction(action);
             ContextCompat.startForegroundService(context, serviceIntent);

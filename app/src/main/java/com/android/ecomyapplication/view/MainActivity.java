@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar=(ProgressBar)findViewById(R.id.progressBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Pick a Song");
-        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setLogo(R.drawable.music_widget_icon);
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE) + ContextCompat
@@ -55,45 +55,26 @@ public class MainActivity extends AppCompatActivity {
                     MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
         } else {
             new loadSongTask().execute();
-
-//            adapter.setFilterQueryProvider(new FilterQueryProvider() {
-//                @Override
-//                public Cursor runQuery(CharSequence constraint) {
-//                    return SongListLoader.getInstance(MainActivity.this).getFilteredCursor(constraint);
-//                }
-//            });
-
-
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Song song = ((SongListAdapter) parent.getAdapter()).getSong(position);
-                    Log.i("SongListactivity click", song.toString());
                     Intent serviceIntent = new Intent(MainActivity.this, MusicService.class);
                     serviceIntent.setAction(WidgetProvider.ACTION_PLAY_PAUSE);
                     serviceIntent.putExtra("song", song);
                     ContextCompat.startForegroundService(MainActivity.this, serviceIntent);
-                    finish();
+
                 }
             });
         }
 
     }
 
-    private void handleIntent(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String searchText = intent.getStringExtra(SearchManager.QUERY);
-
-            Log.d("SongListActivity", "Searched for: " + searchText);
-            adapter.getFilter().filter(searchText);
-        }
-    }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        handleIntent(intent);
     }
 
 
@@ -126,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Void... voids) {
-            handleIntent(getIntent());
             listCursor = SongListLoader.getInstance(MainActivity.this).getCursor();
             String result = "";
             if (listCursor != null && listCursor.getCount() > 0) {

@@ -20,7 +20,7 @@
             android:text="Song Title"
             android:layout_weight="1"
             android:id="@+id/textTitle"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/list_text" />
 
         <TextView
             android:layout_width="wrap_content"

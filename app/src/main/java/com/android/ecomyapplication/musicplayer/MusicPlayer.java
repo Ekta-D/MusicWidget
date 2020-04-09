@@ -40,7 +40,7 @@ public class MusicPlayer implements MediaPlayer.OnCompletionListener {
 
         if (player == null) {
             player = new MediaPlayer();
-         //   player.setOnCompletionListener(this);
+            player.setOnCompletionListener(this);
         }else {
             player.reset();
         }
@@ -85,7 +85,6 @@ public class MusicPlayer implements MediaPlayer.OnCompletionListener {
 
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
-        Log.d(TAG, "Song finished playing");
         try {
             onMusicCompletionListener.onMusicCompletion();
         } catch (IOException e) {

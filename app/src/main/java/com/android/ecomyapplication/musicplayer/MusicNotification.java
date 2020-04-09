@@ -63,7 +63,7 @@ public class MusicNotification {
 
 
         builder.setContentIntent(pendingIntent)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.music_widget_icon)
                 .setTicker(title)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(title)
